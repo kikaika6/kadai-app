@@ -137,6 +137,7 @@ class PostController extends Controller
     {
         // idから投稿を取得
         $post = Post::find($id);
+    
 
         // 投稿が存在するか判定
         if ($post == null) {
@@ -146,16 +147,15 @@ class PostController extends Controller
         if (!Session::exists('user')) {
             return redirect('/');
         }
-
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
+
         // 投稿者を取得する
         $user = $post->user();
         // 自分自身の投稿ページか判定
         if ($loginUser->id != $user->id) {
             return redirect('/');
         }
-
         // データ登録
         $post->is_deleted = true;
         $post->save();
