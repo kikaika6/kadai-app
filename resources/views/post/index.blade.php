@@ -14,11 +14,12 @@
 <body class="">
     <x-header></x-header>
     <div class="page post-page">
-        <form class="form" action="/post" method="post">
+        <form name="post" class="form" action="/post" method="post">
             @csrf
             <textarea name="postContent" id="" cols="30" rows="5" placeholder="いまどうしてる?"></textarea>
             <div class="post-button">
-                <button class="button-white" type="submit">投稿する</button>
+                <input class="button-white" type="button" onclick="check();" value="投稿する">
+
             </div>
             @error('postContent')
             <div>
@@ -31,6 +32,20 @@
     </div>
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
+
+<script>function check() {
+        txt = document.post.postContent.value;
+        n = txt.length;
+        if (n < 1) {
+            alert("1文字以上にしてください");
+        } else if (n > 140) {
+            alert("140文字以内にしてください");
+        } else {
+            document.post.submit();
+        }
+    }
+</script>
+
 <style scoped>
     .post-page .form {
         display: flex;
