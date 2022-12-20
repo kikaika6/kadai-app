@@ -57,9 +57,11 @@
         margin: 20px 20px 0 0;
     }
 
-    .post-page button {
+    .post-page input {
         height: 35px;
         width: 90px;
+        border-radius: 10px;
+        font-weight: bold;
     }
 </style>
 
