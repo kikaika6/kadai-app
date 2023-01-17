@@ -47,11 +47,15 @@ class HomeController extends Controller
      */
     private function sort($array)
     {
+        if($array == null){
+        return $array;
+        }else{
         foreach ($array as $key => $value) {
             $standard_key_array[$key] = $value['post']['created_at'];
         }
         array_multisort($standard_key_array, SORT_DESC, $array);
 
         return $array;
+        }   
     }
 }
