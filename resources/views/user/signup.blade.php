@@ -14,16 +14,29 @@
 <body class="">
     <x-header></x-header>
     <div class="page login-page">
-        <form class="form" action="/login" method="post">
+        <form class="form" action="/signup" method="post">
             @csrf
+            <div class="form-item email">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" />
+            </div>
+            @error('name')
+            <li>{{$message}}</li>
+            @enderror
             <div class="form-item email">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" />
             </div>
+            @error('email')
+            <li>{{$message}}</li>
+            @enderror
             <div class="form-item password">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" />
             </div>
+            @error('password')
+            <li>{{$message}}</li>
+            @enderror
             <div class="login-button">
                 <button class="button-white" type="submit">新規登録</button>
             </div>
